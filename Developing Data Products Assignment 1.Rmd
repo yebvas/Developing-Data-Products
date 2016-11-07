@@ -1,0 +1,18 @@
+---
+title: "Developing Data Products Assignment 1"
+author: "yebvas"
+date: "November 6, 2016"
+output: html_document
+---
+
+```{r echo = FALSE, warning = FALSE}
+library(leaflet)
+
+set.seed(1164153)
+wipe_outs <- data.frame(lat = runif(987, min = 50.07, max = 50.12),
+                        lng = runif(987, min = -122.98, max = -122.88))
+
+skiIcon <- makeIcon("ski-1.jpg", iconWidth = 31*215/230, iconHeight = 31, iconAnchorX = 31*215/230/2, iconAnchorY = 16)
+
+wipe_outs %>% leaflet() %>% addTiles() %>% addMarkers(icon = skiIcon, popup = "I wiped out here", clusterOptions = markerClusterOptions())
+```
